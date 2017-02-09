@@ -3,6 +3,8 @@ package com.example.lzc.pullrefreshrecycleviewdemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.lzc.pullrefreshrecycleviewdemo.adpater.RecyclerAdapter;
 import com.example.lzc.pullrefreshrecycleviewdemo.view.pulltorefreshrecyclerview.PullToRefreshRecyclerView;
@@ -50,6 +52,13 @@ public class MainActivity extends Activity {
 
             }
         });
+
+        adapter.setOnItemClickListener(new RecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onclick(View view, int position) {
+                Toast.makeText(getApplicationContext(),"当前的位置"+position,Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -64,7 +73,7 @@ public class MainActivity extends Activity {
      * @return
      */
     private List<String> getData() {
-    List<String> datas = new ArrayList<>();
+        List<String> datas = new ArrayList<>();
         for (int i = 0; i < 30; i++) {
             datas.add("测试" + i);
         }
